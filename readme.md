@@ -2,6 +2,6 @@
 
 GitHub Website:https://luisb3.github.io/History_of_the_Internet/public_html/
 
-Azure Website: http://history.eastus.azurecontainer.io/
+Azure Website: http://project2web.eastus.azurecontainer.io/index.html
 
 Luis Bastidas - testing for Project2
