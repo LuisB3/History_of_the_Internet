@@ -45,18 +45,36 @@
     <p>
     <ul>
         <p>
-            <h3>What is Pylint?</h3> Pylint is a source-code, bug and quality checker for the Python programming language.
+            <h3>What is it?</h3> Pylint is a source-code, bug and quality checker for the Python programming language.
             It is named following a common convention in Python of a "py" prefix, and a nod to the C programming lint program.
             It follows the style recommended by PEP 8, the Python style guide and can:
             <li>Check the length of each line</li>
             <li>Check that variable names are well-formed according to the project's coding standard</li>
             <li>Check that declared interfaces are truly implemented</li> </p>
     </ul>
-    <p><img ; ;alt="advancement" height="200px"src="Images/Sandra.jpg" style="align-content: center; width: 200px"/></p>
+    <p><img src="Images/Luis.jpg" style="align-content: center; height: 200px; width: 200px"></p>
     <ul>
         <h3>Glossary of OOP terms:</h3>
         <li><span><b>Class</b></span> - a user-defined prototype for an object that defines a set of attributes that characterize any object of the class.
             The attributes are data members (class variables and instance variables) and methods, accessed via dot notation.</li>
+        <p>
+            Within the functions we create, we often have the ability to define and use variables. If we are not careful though, we may accidentally create variables that we do not actually use within the function. Consider the following block of code:
+        </p>
+        <p>
+            <code style="display:block; white-space:pre-wrap">
+                @staticmethod
+                def convert_args_to_tuple_of_floats(values):
+                """Standardizes values to a tuple of floats"""
+                list_values_float = []
+                unnecessary_list = []
+                for item in values:
+                list_values_float.append(float(item))
+                return tuple(list_values_float)
+            </code>
+        </p>
+        <p>
+            If we had this function in our program, Pylint would give us an <code>unused-variable</code> error. Notice the list variable we created that is highlighted in red, <code>unnecessary_list</code>. After defining it, we do not use it for the rest of the function. If that variable was removed, this function would produce the same output and have the same functionality to users. To resolve this error, we should remove the unused variable completely.
+        </p>
     </ul>
     </p>
 
