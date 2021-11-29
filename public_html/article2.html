@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Theory of the Net</title>
+    <title>AAA Tutorial</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 <body>
 
 <div class="container">
-    <h2 style="font-family: Impact; letter-spacing: 5px;">Theory of the Net</h2>
+    <h2 style="font-family: Impact; letter-spacing: 5px;">AAA Tutorial</h2>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,31 +42,98 @@
 
     <p>
     <ul>
-        <li>In October 1957 the Soviet Union launched <span><b>Sputnick</b></span> to catch up and suppress the Soviet’s in space technology <span><b>President Eisenhower</b></span> established ARPA.</li>
-        <li>The military branches each had their own research departments (navy, army, etc.), once money was sent for research purposes, eventually a problem was highlighted: a limited amount of people (only those enlisted in the military) were capable of conducting research to establish better methodology, i.e. development of bullets. A lot of valuable talent was left out.</li>
-        <li><span><b>“Manhattan Project”</b></span> came about which meant the military was able to contract with universities and citizens to do advanced research.</li>
-        <li>This bore an epiphany that the future of war would be more advanced technologically and with military, and this would add to a country’s economy and essentially, global power and influence.</li>
-        <li>With civilian, companies and universities involvement in research there is shared information among military, the government and citizens/companies, the funding goes into one place and each branch/entity is able to focus on one thing at a time: the military on war, the government to meet the requirements of the military through research and development with the assistance of private citizens/entities.</li>
+    <h3>AAA Testing with Python</h3>
+        <li><span><b>ARRANGE-ACT-ASSERT (AAA)</b></span> - a test is a procedure that exercises a behavior to determine if the behavior functions correctly.
+            There are many different kinds of tests, like unit tests, integration tests, or end-to-end tests, but all functional tests do the same basic thing:
+            they try something and report PASS or FAIL. Testing provides an empirical feedback loop for development. That’s how testing keeps us safe.
+            With tests, we know when things break. Without tests, coding can be dangerous. We don’t want to deploy big ol’ bugs! So, if we intend to spend
+            time writing tests, how can we write good tests? There’s a simple but powerful pattern I like to follow: Arrange-Act-Assert.
+        <li><span><b>Arrange</b></span> - Arrange steps should set up the test case. Does the test require any objects or special settings?
+            Does it need to prep a database? Does it need to log into a web app? Handle all of these operations at the start of the test.
+        <li><span><b>Act</b></span> - Act on the target behavior. Act steps should cover the main thing to be tested. This could be calling a function or method,
+            calling a REST API, or interacting with a web page. Keep actions focused on the target behavior.
+        <li><span><b>Assert</b></span> - Assert expected outcomes. Act steps should elicit some sort of response. Assert steps verify the goodness or
+            badness of that response. Sometimes, assertions are as simple as checking numeric or string values. Other times,
+            they may require checking multiple facets of a system. Assertions will ultimately determine if the test passes or fails.</li>
+        <li><span><b>Example:</b></span> - I will be using the calculator for two specific tests; clear history and addition.
+            <div style="background-color: #cfc ; padding: 10px; border: 1px solid green;">
+                <code style="display:block; white-space:pre-wrap">
+                    """Testing the Calculator"""
+                    import pprint
+                    import pytest
+                    from calculator.calculator import Calculator
 
-    </ul>
+                    #this is how you define a function that will run each time you pass it to a test
+                    @pytest.fixture
+                    def clear_history():
+                    """ This is the clear history class"""
+                    Calculator.clear_history()
+
+                    def test_calculator_add(clear_history):
+                    """Testing the Add function of the calculator"""
+                    # pylint: disable=redefined-outer-name
+                    # pylint: disable=unused-argument
+                    assert Calculator.add_number(1,2) == 3
+                    assert Calculator.add_number(2,2) == 4
+                    assert Calculator.add_number(3,3) == 6
+                    assert Calculator.add_number(4,4) == 8
+                    assert Calculator.history_count() == 4
+                    assert Calculator.get_results_of_last_calculation_added_to_history() == 8
+                    pprint.pprint(Calculator.history)
+
+                    def test_clear_history(clear_history):
+                    """Testing the Clear function of the calculator"""
+                    # pylint: disable=redefined-outer-name
+                    # pylint: disable=unused-argument
+                    assert Calculator.add_number(1,2) == 3
+                    assert Calculator.add_number(2,2) == 4
+                    assert Calculator.add_number(3,3) == 6
+                    assert Calculator.add_number(4,4) == 8
+                    assert Calculator.history_count() == 4
+                    assert Calculator.clear_history() is True
+                    assert Calculator.history_count() == 0
+                </code></div>
+</ul>
     </p>
-
-    <img src="Images/eisenhower.jpg" alt="advancement"; style="align-content: center; width: 350px"; height="400px"/>
-
-    <p>
-    <ul>
-        <li>The fear of inefficiency and the potential of the military creating dangerous developments with the research money was minimized with the money pooling and the involvement/oversight of civilians through the Congress.</li>
-        <li>Eisenhower established the <span><b>Advanced Research Projects Agency “ARPA”</b></span> in charge of the space program, which included Computer Science. It was a centralized agency that does all the research. Brokers would be overseeing the work done by private companies, universities and the military.</li>
-        <li>The way ARPA worked was a request was made by the military (i.e. a more efficient method than switch boarding for phone calls), ARPA recruits private citizens, companies and universities to research more effective methods as replacement, and these “recruits” would be compensated by ARPA.</li>
-        <li>The ARPA system also established the grant money system in universities.</li>
-        <li>ARPA became <span><b>DARPA: Defense Advanced Research Agency</b></span> in 1958.</li>
-        <li><span><b>J.C.R Licklider</b></span> – a professor from MIT/psychologist who invented <span><b>“information theory”</b></span>. Information Theory was Professor Licklider’s invention of a message being able to check itself for errors, ultimately, the mathematics behind one part of the message being able to check if the other part of it was correct.</li>
-
-    </ul>
-    </p>
-
+        <li><span><b>Arrange:</b></span> the Addition class inherits our Calculation class which takes a set of values and
+            transforms them. Then an object of the Calculation class gets passed to the Addition class.  The values are then added together as
+            a check that our expected answer is successful. First, I clear the history.
+            <div style="background-color: #cfc ; padding: 10px; border: 1px solid green;">
+                <code style="display:block; white-space:pre-wrap">
+                    #this is how you define a function that will run each time you pass it to a test
+                    @pytest.fixture
+                    def clear_history():
+                    """ This is the clear history class"""
+                    Calculator.clear_history()
+                </code></div>
+        <li><span><b>Act:</b></span> I define my addition test to be used to assert that Addition works by comparing the
+            expected answer to the result from our last calculation.</li>
+    <div style="background-color: #cfc ; padding: 10px; border: 1px solid green;">
+        <code style="display:block; white-space:pre-wrap">
+            def test_calculator_add(clear_history):
+            """Testing the Add function of the calculator"""
+            # pylint: disable=redefined-outer-name
+            # pylint: disable=unused-argument
+        </code></div>
+        <li><span><b>Assert:</b></span> then I call the Calculator's add_numbers method and check to see if the test passes or not.
+            <div style="background-color: #cfc ; padding: 10px; border: 1px solid green;">
+                <code style="display:block; white-space:pre-wrap">
+                    def test_calculator_add(clear_history):
+                    """Testing the Add function of the calculator"""
+                    # pylint: disable=redefined-outer-name
+                    # pylint: disable=unused-argument
+                    assert Calculator.add_number(1,2) == 3
+                    assert Calculator.add_number(2,2) == 4
+                    assert Calculator.add_number(3,3) == 6
+                    assert Calculator.add_number(4,4) == 8
+                    assert Calculator.history_count() == 4
+                    assert Calculator.get_results_of_last_calculation_added_to_history() == 8
+                    pprint.pprint(Calculator.history)
+                </code></div>
+        <li><span><b>Success:</b></span> This addition test passes because the last test of 4 + 4 = 8 maintains its last position in history.
+            The check is successful and equals 8. If the value was equal to anything but 8, my test would fail. I can now use similar tests for other mathematical functions in my calculator program.
 </div>
-</div>
+
 <!-- Footer -->
 <footer>
         <p class="text-center"> <a class="footer-repo" href="https://github.com/LuisB3/History_of_the_Internet/tree/InternetHiistoryMerged" target="_blank" title="My git repository">Git Repo | </a>
